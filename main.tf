@@ -36,6 +36,8 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
+  network= "provisioning-vpc"
+
   master_auth {
     username = ""
     password = ""
