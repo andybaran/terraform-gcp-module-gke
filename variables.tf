@@ -21,7 +21,14 @@ variable "primary-node-count" {
 variable "primary-node-machine-type" {
   description = "Machine type needed for primary node"
 }
-
 variable "bq-cluster-usage-dataset" {
   description = "Dataset to store cluster resource usage data"
+}
+
+variable "organization-name" {
+  description = "TF Organization name"
+}
+
+variable "workspace-name" {
+  description = "workspace to source project from"
 }

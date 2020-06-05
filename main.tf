@@ -3,9 +3,9 @@ data "terraform_remote_state" "project" {
 
   config = {
     hostname = "app.terraform.io"
-    organization = "akb-test"
+    organization = var.organization-name
     workspaces = {
-      name = "GCP-IOT"  #TODO: This shouldn't be hardcoded...let it come in as a var
+      name = var.workspace-name
     }
   }
 }
@@ -75,7 +75,5 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
       "https://www.googleapis.com/auth/monitoring",
     ]
   }
-  
-  
 
 }
