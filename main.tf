@@ -44,6 +44,14 @@ resource "google_container_cluster" "primary" {
       issue_client_certificate = false
     }
   }
+  resource_usage_export_config {
+    enable_network_egress_metering = true
+    enable_resource_consumption_metering = true
+
+  bigquery_destination {
+    dataset_id = var.bq-cluster-usage-dataset
+  }
+}
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
@@ -66,13 +74,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     ]
   }
   
-  resource_usage_export_config {
-    enable_network_egress_metering = true
-    enable_resource_consumption_metering = true
-
-  bigquery_destination {
-    dataset_id = var.bq-cluster-usage-dataset
-  }
-}
+  
 
 }
