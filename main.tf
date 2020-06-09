@@ -1,7 +1,7 @@
 
 provider "google" {
   credentials = var.creds
-  project     = var.project
+  project     = var.gcoud_project
   region = var.region
   zone = var.zone
 }
