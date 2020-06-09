@@ -26,9 +26,9 @@ variable "bq-cluster-usage-dataset" {
 }
 
 variable "creds" {
-  description = "service account to that owns project"
+  description = "base64decode'd service account token"
 }
-
+1
 variable "gcloud_project" {
   description = "google cloud project to create cluster in"
 }
