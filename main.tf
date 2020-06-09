@@ -1,7 +1,7 @@
 
 provider "google" {
   project = var.gcloud_project
-  creds = var.creds
+  credentials = var.creds
   region = var.region
   zone = var.zone
 }
