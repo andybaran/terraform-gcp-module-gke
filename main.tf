@@ -1,3 +1,9 @@
+terraform {
+  required_providers {
+    google = "3.24.0"
+  }
+}
+
 
 provider "google" {
   credentials = var.creds
