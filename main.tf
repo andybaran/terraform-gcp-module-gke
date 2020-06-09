@@ -7,7 +7,6 @@ provider "google" {
 }
 
 resource "google_bigquery_dataset" "cluster-usage-dataset" {
-
     dataset_id = var.bq-cluster-usage-dataset
     friendly_name = var.bq-cluster-usage-dataset
     description = "Dataset containing tables related GKE cluster usage"
@@ -37,7 +36,7 @@ resource "google_container_cluster" "primary" {
     enable_resource_consumption_metering = true
 
   bigquery_destination {
-    dataset_id = var.bq-cluster-usage-dataset
+    dataset_id = google_bigquery_dataset.cluster-usage-dataset.dataset_id
   }
 }
 }
