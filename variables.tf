@@ -25,14 +25,6 @@ variable "bq-cluster-usage-dataset" {
   description = "Dataset to store cluster resource usage data"
 }
 
-variable "organization-name" {
-  description = "TF Organization name"
-}
-
-variable "workspace-name" {
-  description = "workspace to source project from"
-}
-
 variable "creds" {
   description = "service account to that owns project"
 }
