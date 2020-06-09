@@ -1,6 +1,6 @@
 
 provider "google" {
-  credentials = base64decode(var.creds)
+  credentials = var.creds
   project = var.gcloud_project
   region = var.region
   zone = var.zone
