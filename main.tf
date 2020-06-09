@@ -9,7 +9,7 @@ provider "google" {
 resource "google_bigquery_dataset" "cluster-usage-dataset" {
     dataset_id = var.bq-cluster-usage-dataset
     friendly_name = var.bq-cluster-usage-dataset
-    description = "Dataset containing tables related GKE cluster usage"
+    description = "Dataset containing tables related to GKE cluster usage"
     location = "US"
 }
 
