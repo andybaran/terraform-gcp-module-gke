@@ -1,19 +1,7 @@
-data "terraform_remote_state" "project" {
-  backend = "remote"
-
-  config = {
-    hostname = "app.terraform.io"
-    organization = var.organization-name
-    workspaces = {
-      name = var.workspace-name
-    }
-  }
-}
-
 
 provider "google" {
-  credentials = base64decode(data.terraform_remote_state.project.outputs.service_account_token)
-  project     = data.terraform_remote_state.project.outputs.short_project_id
+  credentials = var.creds
+  project     = var.project
   region = var.region
   zone = var.zone
 }
@@ -39,11 +27,9 @@ resource "google_container_cluster" "primary" {
   network= "provisioning-vpc"
 
   master_auth {
-    username = ""
-    password = ""
 
     client_certificate_config {
-      issue_client_certificate = false
+      issue_client_certificate = true
     }
   }
   resource_usage_export_config {
