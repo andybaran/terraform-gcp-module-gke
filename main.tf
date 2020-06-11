@@ -14,14 +14,14 @@ resource "google_bigquery_dataset" "cluster-usage-dataset" {
 }
 
 resource "google_project_iam_member" "gke_cluster_admin" {
-    project = google_project.project.id
+    project = var.gcloud_project
     role = "roles/container.clusterAdmin"
     member = "serviceAccount:${google_service_account.admin_service_account.email}"
 }
 
 
 resource "google_project_iam_member" "gke_container_admin" {
-    project = google_project.project.id
+    project = var.gcloud_project
     role = "roles/container.admin"
     member = "serviceAccount:${google_service_account.admin_service_account.email}"
 }
