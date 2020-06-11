@@ -34,7 +34,7 @@ resource "google_project_iam_member" "gke_cluster_admin" {
 resource "google_project_iam_member" "gke_container_admin" {
     project = var.gcloud_project
     role = "roles/container.admin"
-    member = "serviceAccount:${google_service_account.admin_service_account.email}"
+    member = "serviceAccount:${data.terraform_remote_state.project.outputs.admin_service_account.email}"
 }
 
 resource "google_container_cluster" "primary" {
