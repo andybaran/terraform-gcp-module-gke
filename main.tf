@@ -27,14 +27,14 @@ resource "google_bigquery_dataset" "cluster-usage-dataset" {
 resource "google_project_iam_member" "gke_cluster_admin" {
     project = var.gcloud_project
     role = "roles/container.clusterAdmin"
-    member = "serviceAccount:${data.terraform_remote_state.project.outputs.admin_service_account.email}"
+    member = "serviceAccount:${data.terraform_remote_state.project.outputs.service_account.email}"
 }
 
 
 resource "google_project_iam_member" "gke_container_admin" {
     project = var.gcloud_project
     role = "roles/container.admin"
-    member = "serviceAccount:${data.terraform_remote_state.project.outputs.admin_service_account.email}"
+    member = "serviceAccount:${data.terraform_remote_state.project.outputs.sdfgservice_account.email}"
 }
 
 resource "google_container_cluster" "primary" {
