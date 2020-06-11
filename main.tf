@@ -13,7 +13,22 @@ resource "google_bigquery_dataset" "cluster-usage-dataset" {
     location = "US"
 }
 
+resource "google_project_iam_member" "gke_cluster_admin" {
+    project = google_project.project.id
+    role = "roles/container.clusterAdmin"
+    member = "serviceAccount:${google_service_account.admin_service_account.email}"
+}
+
+
+resource "google_project_iam_member" "gke_container_admin" {
+    project = google_project.project.id
+    role = "roles/container.admin"
+    member = "serviceAccount:${google_service_account.admin_service_account.email}"
+}
+
 resource "google_container_cluster" "primary" {
+
+  depends_on = [google_bigquery_dataset.cluster-usage-dataset,google_project_iam_member.gke_cluster_admin, google_project_iam_member.gke_container_admin]
   name     = var.primary-cluster
   location = var.region
 
