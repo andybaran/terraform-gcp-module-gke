@@ -32,3 +32,11 @@ variable "creds" {
 variable "gcloud_project" {
   description = "google cloud project to create cluster in"
 }
+
+variable "organization-name" {
+  description = "TFE Organization name"
+}
+
+variable "workspace-name" {
+  description = "TFE workspace name where project was created"
+}

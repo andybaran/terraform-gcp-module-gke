@@ -1,3 +1,14 @@
+data "terraform_remote_state" "project" {
+  backend = "remote"
+
+  config = {
+    hostname = "app.terraform.io"
+    organization = var.organization-name
+    workspaces = {
+      name = var.workspace-name
+    }
+  }
+}
 
 provider "google" {
   credentials = var.creds
@@ -16,7 +27,7 @@ resource "google_bigquery_dataset" "cluster-usage-dataset" {
 resource "google_project_iam_member" "gke_cluster_admin" {
     project = var.gcloud_project
     role = "roles/container.clusterAdmin"
-    member = "serviceAccount:${google_service_account.admin_service_account.email}"
+    member = "serviceAccount:${data.terraform_remote_state.project.outputs.admin_service_account.email}"
 }
 
 
