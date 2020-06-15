@@ -35,5 +35,5 @@ output "region" {
 
 output "gcloud_project" {
   value = var.region
-  description = "GCP project the cluser is in.
+  description = "GCP project the cluser is in."
 }
