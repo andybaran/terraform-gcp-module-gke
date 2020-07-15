@@ -40,3 +40,7 @@ variable "organization-name" {
 variable "workspace-name" {
   description = "TFE workspace name where project was created"
 }
+
+variable "remote-hostname" {
+  description = "Hostname of TFE server storing remote state"
+}
