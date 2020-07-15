@@ -2,7 +2,7 @@ data "terraform_remote_state" "project" {
   backend = "remote"
 
   config = {
-    hostname = var.remote_hostname
+    hostname = var.remote-hostname
     organization = var.organization-name
     workspaces = {
       name = var.workspace-name
